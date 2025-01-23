@@ -74,13 +74,38 @@ git remote add origin <repository-url>
 git fetch origin
 ```
 
-5. Reset the local repository to match the remote repository using the `git reset --hard` command.
+5. Checkout the main branch using the `git checkout` command.
+
+```bash
+git checkout -b main origin/main
+```
+
+> If you have already pushed changes to the repository, you may need to reset the local repository to match the remote repository. You can do this using the `git reset --hard` command.
+
+
+6. Reset the local repository to match the remote repository using the `git reset --hard` command.
 
 ```bash
 git reset --hard origin/main
 ```
 
-6. Now you can push your changes to the repository using the `git push` command.
+> If you have already pushed the changes and the remote repository on GitHub shows the main branch, then the Source Control in VSCode may be prompting you to "Publish Branch". In this case, VSCode hasn't detected the local branch correctly.
+
+6-1. Ensure you are on the `main` branch
+
+```bash
+git checkout main
+```
+
+6-2. Set the upstream branch for `main`
+
+```bash
+git branch --set-upstream-to=origin/main main
+```
+
+This will link your local main branch to the remote main branch and should stop the Source Control from asking you to "Publish Branch".
+
+7. Now you can push your changes to the repository using the `git push` command.
 
 ```bash
 git push origin main
