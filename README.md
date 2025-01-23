@@ -41,3 +41,48 @@ git remote -v
 git push origin master
 ```
 
+## Alternative method
+
+If you want to reconnect to the same repository without cloning it again, you can follow the steps below.
+
+1. Remove the `.git` folder from your project directory.
+
+```bash
+rm -rf .git
+```
+
+2. Initialize a new git repository in your project directory.
+
+```bash
+git init
+```
+
+3. Add the remote repository URL using the `git remote add origin` command.
+
+> Note that you can use the SSH or HTTPS URL of the repository. If using the SSH URL
+> after entering the `git fetch origin` command, you may need to enter your GitHub 
+> passphrase. for the Key.
+
+
+```bash
+git remote add origin <repository-url>
+```
+
+4. Fetch the changes from the remote repository using the `git fetch` command.
+
+```bash
+git fetch origin
+```
+
+5. Reset the local repository to match the remote repository using the `git reset --hard` command.
+
+```bash
+git reset --hard origin/main
+```
+
+6. Now you can push your changes to the repository using the `git push` command.
+
+```bash
+git push origin main
+```
+
